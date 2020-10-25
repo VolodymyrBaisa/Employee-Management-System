@@ -1,8 +1,8 @@
 {
     "name": "Employee Management System",
     "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
+    "description": "This command-line interface is a Node MySQL application that allows users to view and interact with information stored in a database that houses employee, company, and department data.",
+    "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
