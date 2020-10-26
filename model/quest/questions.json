@@ -1,0 +1,108 @@
+{
+    "selectToDo": {
+        "name": "action",
+        "type": "list",
+        "message": "What would you like to do?",
+        "choices": [
+            "View All Employees",
+            "View All Employees by Department",
+            "View All Employees by Manager",
+            "Add Employee",
+            "Update Employee Role",
+            "Update Employee Manager",
+            "Remove Employee",
+            "View All Roles",
+            "Add Role",
+            "Remove Role",
+            "View All Departments",
+            "Add Department",
+            "Remove Department",
+            "EXIT"
+        ]
+    },
+    "departments": {
+        "name": "department",
+        "type": "list",
+        "message": "What department would you like to search by?"
+    },
+    "managers": {
+        "name": "manager",
+        "type": "list",
+        "message": "Which manager would you like to search by?"
+    },
+    "addEmployeeFirstName": {
+        "name": "first_name",
+        "type": "input",
+        "default": "Jon",
+        "message": "What is the employee's first name?"
+    },
+    "addEmployeeLastName": {
+        "name": "last_name",
+        "type": "input",
+        "default": "Snow",
+        "message": "What is the employee's last name?"
+    },
+    "viewEmployeeRole": {
+        "name": "role",
+        "type": "list",
+        "message": "What is the employee's role?"
+    },
+    "viewEmployeeManager": {
+        "name": "manager_name",
+        "type": "list",
+        "message": "Who is the employee's manager?"
+    },
+    "addRole": {
+        "name": "role_title",
+        "type": "input",
+        "default": "Developer Lead",
+        "message": "What is the role you would like to add?"
+    },
+    "addRoleSalary": {
+        "name": "salary",
+        "type": "input",
+        "default": "150000",
+        "message": "What is the salary of the role?"
+    },
+    "addRoleDepartment": {
+        "name": "dept_name",
+        "type": "list",
+        "message": "What is the role's department?"
+    },
+    "addDepartment": {
+        "name": "dept_name",
+        "type": "input",
+        "default": "Development",
+        "message": "What is the department you would like to add?"
+    },
+    "removeEmployee": {
+        "name": "removeEmployee",
+        "type": "list",
+        "message": "Which employee would you like to remove?"
+    },
+    "updateEmployee": {
+        "name": "updateEmployee",
+        "type": "list",
+        "message": "Which employee would you like to update?"
+    },
+    "updateEmployeeRole": {
+        "name": "updateRole",
+        "type": "list",
+        "message": "What would you like you to change their role title to?"
+    },
+    "updateManager": {
+        "name": "updateManager",
+        "type": "list",
+        "message": "Who would you like to change their manager to?"
+    },
+    "removeRole": {
+        "name": "removeRole",
+        "type": "list",
+        "message": "Which role would you like to remove?"
+    },
+    "removeDept": {
+        "name": "removeDept",
+        "type": "list",
+        "message": "Which department would you like to remove?"
+    }
+}
