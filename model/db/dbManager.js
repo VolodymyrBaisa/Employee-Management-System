@@ -119,6 +119,18 @@ module.exports = class DBManager {
         return await db.query(q, role);
     }
 
+    async addDepartment(department) {
+        const q = `INSERT INTO department (name) VALUES (?)`;
+
+        return await db.query(q, department);
+    }
+
+    async removeDept(department) {
+        const q = `DELETE FROM department WHERE name=?`;
+
+        return await db.query(q, department);
+    }
+
     async close() {
         db.close();
     }

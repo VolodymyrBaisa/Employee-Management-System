@@ -184,4 +184,27 @@ module.exports = class Question {
         };
         return removeRole;
     }
+
+    async addDepartment() {
+        const addDepartment = await (await this.questionsJson).addDepartment;
+        addDepartment.validate = "validate";
+        addDepartment["validate"] = (answer) => {
+            if (answer.length < 1) {
+                return print.err("A valid department is required.");
+            }
+            return true;
+        };
+
+        return addDepartment;
+    }
+
+    async removeDept() {
+        const removeDept = await (await this.questionsJson).removeDept;
+        removeDept.choices = "choices";
+        removeDept["choices"] = async () => {
+            const dept = await dbManager.getAllDepartments();
+            return dept.map((a) => a["name"]);
+        };
+        return removeDept;
+    }
 };
