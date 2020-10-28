@@ -170,7 +170,6 @@ module.exports = class Controller {
             case "Add Department":
                 json = await questions.addDepartment();
                 table = await print.questions(json);
-                console.log(table);
                 await dbManager.addDepartment(table.dept_name);
                 print.info("Department successfully added.");
                 break;
