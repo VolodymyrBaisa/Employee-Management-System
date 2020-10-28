@@ -54,7 +54,6 @@ module.exports = class Controller {
                 break;
 
             case "Add Employee":
-                employee.length = 0; // clear;
                 //first name
                 json = await questions.addEmployeeFirstName();
                 table = await print.questions(json);
