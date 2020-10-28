@@ -12,7 +12,7 @@ module.exports = class Print {
     }
 
     err(msg) {
-        console.log(errorStyle(msg.stack));
+        console.log(errorStyle(msg));
     }
 
     success(msg) {

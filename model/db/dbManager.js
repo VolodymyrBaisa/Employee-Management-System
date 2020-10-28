@@ -15,6 +15,14 @@ module.exports = class DBManager {
         return await db.query(q);
     }
 
+    async viewEmployeesExcludeManagers() {
+        const q = `SELECT employee.first_name, employee.last_name, employee.manager_id FROM employee
+        LEFT JOIN employee e2 ON e2.id=employee.manager_id
+        WHERE employee.manager_id IS NOT NULL`;
+
+        return await db.query(q);
+    }
+
     async getAllDepartments() {
         const q = "SELECT * FROM department";
 
@@ -69,10 +77,46 @@ module.exports = class DBManager {
         return await db.query(q, manager);
     }
 
+    async departmentToDepartmentId(department) {
+        const q = `SELECT id FROM department WHERE name=?`;
+
+        return await db.query(q, department);
+    }
+
     async addEmployee(employee) {
         const q = `INSERT INTO employee SET ?`;
 
         return await db.query(q, employee);
+    }
+
+    async updateEmployeeRole(args) {
+        const q = `UPDATE employee SET employee.role_id = ? WHERE CONCAT(employee.first_name, ' ', employee.last_name) = ?`;
+
+        return await db.query(q, args);
+    }
+
+    async updateEmployeeManager(args) {
+        const q = `UPDATE employee SET employee.manager_id = ? WHERE CONCAT(employee.first_name, ' ', employee.last_name) = ?`;
+
+        return await db.query(q, args);
+    }
+
+    async removeEmployee(employee) {
+        const q = `DELETE FROM employee WHERE CONCAT(employee.first_name, ' ', employee.last_name) = ?`;
+
+        return await db.query(q, employee);
+    }
+
+    async addRole(role) {
+        const q = `INSERT INTO role SET ?`;
+
+        return await db.query(q, role);
+    }
+
+    async removeRole(role) {
+        const q = `DELETE FROM role WHERE title=?`;
+
+        return await db.query(q, role);
     }
 
     async close() {

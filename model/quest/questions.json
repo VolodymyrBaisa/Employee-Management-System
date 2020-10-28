@@ -64,7 +64,7 @@
         "default": "150000",
         "message": "What is the salary of the role?"
     },
-    "addRoleDepartment": {
+    "viewRoleDepartment": {
         "name": "dept_name",
         "type": "list",
         "message": "What is the role's department?"

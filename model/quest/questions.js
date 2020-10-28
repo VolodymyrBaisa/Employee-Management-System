@@ -85,4 +85,103 @@ module.exports = class Question {
         };
         return manager;
     }
+
+    async updateEmployee() {
+        const updateEmployee = await (await this.questionsJson).updateEmployee;
+        updateEmployee.choices = "choices";
+        updateEmployee["choices"] = async () => {
+            const table = await dbManager.viewAllEmployees();
+            return table.map((a) => `${a["first_name"]} ${a["last_name"]}`);
+        };
+        return updateEmployee;
+    }
+
+    async updateEmployeeExcludeManagement() {
+        const updateEmployee = await (await this.questionsJson).updateEmployee;
+        updateEmployee.choices = "choices";
+        updateEmployee["choices"] = async () => {
+            const table = await dbManager.viewEmployeesExcludeManagers();
+            return table.map((a) => `${a["first_name"]} ${a["last_name"]}`);
+        };
+        return updateEmployee;
+    }
+
+    async updateEmployeeRole() {
+        const updateEmployeeRole = await (await this.questionsJson)
+            .updateEmployeeRole;
+        updateEmployeeRole.choices = "choices";
+        updateEmployeeRole["choices"] = async () => {
+            const table = await dbManager.viewAllEmployeeRole();
+            return table.map((a) => a.title);
+        };
+        return updateEmployeeRole;
+    }
+
+    async updateEmployeeManagement() {
+        const manager = await (await this.questionsJson).updateManager;
+        manager.choices = "choices";
+        manager["choices"] = async () => {
+            const allManager = await dbManager.getAllManagers();
+            return allManager.map(
+                (a) => `${a["first_name"]} ${a["last_name"]}`
+            );
+        };
+        return manager;
+    }
+
+    async removeEmployee() {
+        const removeEmployee = await (await this.questionsJson).removeEmployee;
+        removeEmployee.choices = "choices";
+        removeEmployee["choices"] = async () => {
+            const table = await dbManager.viewAllEmployees();
+            return table.map((a) => `${a["first_name"]} ${a["last_name"]}`);
+        };
+        return removeEmployee;
+    }
+
+    async addRole() {
+        const addRole = await (await this.questionsJson).addRole;
+        addRole.validate = "validate";
+        addRole["validate"] = (answer) => {
+            if (answer.length < 1) {
+                return print.err("A valid role is required.");
+            }
+            return true;
+        };
+
+        return addRole;
+    }
+
+    async addRoleSalary() {
+        const addRoleSalary = await (await this.questionsJson).addRoleSalary;
+        addRoleSalary.validate = "validate";
+        addRoleSalary["validate"] = (answer) => {
+            if (answer.length < 1) {
+                return print.err("A valid salary is required.");
+            }
+            return true;
+        };
+
+        return addRoleSalary;
+    }
+
+    async viewRoleDepartment() {
+        const department = await (await this.questionsJson).viewRoleDepartment;
+        department.choices = "choices";
+        department["choices"] = async () => {
+            const allDepartments = await dbManager.getAllDepartments();
+            return allDepartments.map((a) => a["name"]);
+        };
+        return department;
+    }
+
+    async removeRole() {
+        const removeRole = await (await this.questionsJson).removeRole;
+        removeRole.choices = "choices";
+        removeRole["choices"] = async () => {
+            const role = await dbManager.viewAllEmployeeRole();
+            return role.map((a) => a["title"]);
+        };
+        return removeRole;
+    }
 };
