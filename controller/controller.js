@@ -164,6 +164,8 @@ module.exports = class Controller {
                 break;
 
             case "View All Departments":
+                table = await dbManager.getAllDepartments();
+                print.table(table);
                 break;
 
             case "Add Department":
